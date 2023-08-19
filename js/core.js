@@ -20,6 +20,10 @@ const currencyDollar = new Currency('Dólares', 367);
 const currencyEuro = new Currency('Euros', 381);
 const currencyYuan = new Currency('Yuanes', 50);
 
+//variable para iniciar el while loop
+let continueExchange = true;
+
+while (continueExchange) {
 //ciclo para elegir la divisa
 for (let i = 1; i <= 3; i++) {
   currencyPicked = parseInt(
@@ -124,3 +128,10 @@ function calculateExchange() {
 
 //ejecucion de la funcion
 calculateExchange();
+
+const doYouWantToContinue = prompt('Querés cotizar otras monedas, o evaluar con otro número? (Si/No)').toLowerCase();
+
+if (doYouWantToContinue !== 'si') {
+  continueExchange = false;
+}
+}
