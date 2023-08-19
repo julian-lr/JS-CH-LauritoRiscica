@@ -11,26 +11,26 @@
 // let resultado = 10; dato tipo number
 
 //Constantes
-/*
- const copaDelMundoMessi = 2022;
- const copaDelMundoMaradona = 1986;
- const nacArgentina = 1816;
- */
+
+//  const copaDelMundoMessi = 2022;
+//  const copaDelMundoMaradona = 1986;
+//  const nacArgentina = 1816;
+ 
 
 //Operaciones matematicas basicas
-/*
- let suma = resultado + 90;
- let resta = copaDelMundoMessi - copaDelMundoMaradona;
- let multiplicacion = resultado * 10;
- let division = resultado / 2;
-*/
+
+//  let suma = resultado + 90;
+//  let resta = copaDelMundoMessi - copaDelMundoMaradona;
+//  let multiplicacion = resultado * 10;
+//  let division = resultado / 2;
+
 
 //Concatenacion
-/*
- let saludo = 'Hola ' + nombre + ', ';
- let nota = 'tenes un ' + resultado + ' en tu entrega.';
- let completo = saludo + nota;
- */
+
+//  let saludo = 'Hola ' + nombre + ', ';
+//  let nota = 'tenes un ' + resultado + ' en tu entrega.';
+//  let completo = saludo + nota;
+ 
 
 //Ingreso de datos con prompt
 //let nombreIngresado = prompt('Ingrese su nombre');
@@ -38,15 +38,16 @@
 //Convertir prompt a numero
 //parseInt si quiero convertir a un numero entero
 //parseFloat si quiero convertir a un numero decimal
-/*
- let anoNacim = parseInt(prompt('Ingresa tu año de nacimiento'));
- let edad = 2023 - anoNacim;
 
- console.log('El nombre del usuario es ' + nombreIngresado + ' y su edad es de ' + edad + ' años.'); 
- */
+//  let anoNacim = parseInt(prompt('Ingresa tu año de nacimiento'));
+//  let edad = 2023 - anoNacim;
+
+//  console.log('El nombre del usuario es ' + nombreIngresado + ' y su edad es de ' + edad + ' años.'); 
+ 
 
 //=====================SIGUIENTE CLASE A PARTIR DE ABAJO============================================
-/* let fuiAVotar = prompt('Responde con SI o NO si fuiste a votar');
+/*
+let fuiAVotar = prompt('Responde con SI o NO si fuiste a votar');
 
  if (fuiAVotar.toLowerCase() == 'si') {
    console.log('Perdiste tiempo un domingo.');
@@ -77,16 +78,16 @@ console.log('Tenes que pagar $' + amountToPay + ' pesos.');
  let precio=parseFloat(prompt('Ingresá el precio de tu producto'));
  let precioIva=precio*0.21;
  console.log('El IVA del precio $'+precio+' es: $'+precioIva);
- */
+ 
 
-/*
+
 for (let i = 1; i <= 20; i++) {
 let ingresarNombre = prompt('Ingresar nombre');
 alert('Turno número '+i+ ' Nombre: '+ingresarNombre);
 }
-*/
 
-/*
+
+
 let user;
 let pwd;
 
@@ -100,9 +101,9 @@ for(let i=1; i<=3; i++) {
     alert('Usuario y/o contraseña incorrecta. Te quedan '+(3-i)+' intentos.');
   }
 }
-*/
 
-/*
+
+
 let idProducto = prompt('Ingresa ID del producto (Ingresá 0 para salir)');
 
 while (idProducto != '0') {
@@ -126,19 +127,20 @@ while (idProducto != '0') {
   idProducto = prompt('Ingresa ID del producto (Apretar 0 para salir)');
 
 }
-*/
 
+*/
 // ----------------------CLASE DE FUNCIONES----------------------------
+/*
 //declaracion
-/* function welcome() {
+ function welcome() {
   let user = prompt('Cual es tu nombre?');
   alert('Bienvenido/a ' + user +'!');
 }
-*/
+
 //invocación
 //welcome();
 
-/*
+
 let envio = prompt('Desea envio a domicilio? \n 1- Si \n 2- No');
 let necesitaEnvio;
 
@@ -164,9 +166,9 @@ function informarEnvio(eleccionEnvio, montoTotal){
 }
 
 informarEnvio(necesitaEnvio, total);
-*/
 
-/*
+
+
 function authUser(user,pwd) {
   if((user=='admin') && (pwd == '1234')) {
     return true;
@@ -182,9 +184,9 @@ let pwd = prompt('Ingresá tu contraseña');
 let authResult = authUser(user,pwd);
 
 console.log(authResult);
-*/
 
-/*
+
+
 function calculateDiscount(total, percentage) {
   let discount = total * (percentage / 100);
   return discount;
@@ -211,11 +213,11 @@ switch (paymentMethod) {
     alert('Error');
     break;
 }
-*/
+
 
 
 //scope de una variable
-/*
+
 let province = 'Buenos Aires'
 
 function observeCityOrigin(){
@@ -224,7 +226,7 @@ function observeCityOrigin(){
 }
 
 observeCityOrigin();
-*/
+
 
 
 // funciones anonimas y funciones flecha
@@ -235,3 +237,97 @@ observeCityOrigin();
 //console.log('El area del rectangulo de base 3 y de altura 2 es '+area(3,2));
 
 //const discount = (total,percentage) => total * (percentage/100);
+*/
+
+// ----------------- SIGUIENTE CLASE---------------
+// objetos
+// literales
+/*
+const fibra = {
+  color: 'negro',
+  marca: 'faber',
+  precio: 700,
+  vendido: false,
+};
+
+console.log(fibra);
+console.log('El color de la fibra es: ' + fibra.color);
+
+fibra.precio = 1000;
+
+console.log(fibra);
+console.log(fibra['color']);
+*/
+
+//funcion constructora
+/*
+function Remera(color, talle, marca) {
+  this.color = color;
+  this.talle = talle;
+  this.marca = marca;
+  //metodos
+  this.mostrarRemera = function () {
+    alert(
+      'Remera color: ' +
+        this.color +
+        '\nTalle: ' +
+        this.talle +
+        '\nMarca: ' +
+        this.marca
+    );
+  };
+}
+
+const remera1 = new Remera('roja', 'XL', 'Polo');
+const remera2 = new Remera('blanca', 'XL', 'Polo');
+const remera3 = new Remera('negra', 'XL', 'Polo');
+const remera4 = new Remera('azul', 'XL', 'Polo');
+
+console.log(remera1);
+console.log(remera2);
+console.log(remera3);
+console.log(remera4);
+
+remera4.mostrarRemera();
+*/
+
+// metodos de strings
+/*
+let frase = 'Persevera y triunfarás!';
+
+console.log('La frase tiene ' + frase.length + ' caracteres.');
+
+console.log(frase.toUpperCase());
+
+console.log(frase.toLowerCase());
+*/
+
+// Class
+/*
+class Computadora {
+  constructor(tipo, marca, precio) {
+    this.tipo = tipo;
+    this.marca = marca;
+    this.precio = precio;
+    this.vendido=false;
+  }
+  //metodos
+  venderCompu(){
+    this.vendido=true;
+  }
+  aumentarPrecio(porcentaje){
+    this.precio=this.precio * porcentaje;
+  }
+}
+
+const compu1 = new Computadora('Desktop', 'DELL', 1700);
+const compu2 = new Computadora('Desktop','HP', 1500);
+const compu3 = new Computadora('Laptop','Apple', 2500);
+
+compu3.venderCompu();
+
+let aumento = parseInt(prompt('Ingresá el aumento que queres aplicar.'))
+compu3.aumentarPrecio(1+(aumento/100));
+
+console.log(compu3);
+*/
