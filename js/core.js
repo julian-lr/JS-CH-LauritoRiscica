@@ -15,6 +15,7 @@ class Currency {
     this.valueInARS = this.valueInARS * percentage;
   }
 }
+
 //const de las divisas
 const currencyDollar = new Currency('Dólares', 367);
 const currencyEuro = new Currency('Euros', 381);

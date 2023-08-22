@@ -331,3 +331,31 @@ compu3.aumentarPrecio(1+(aumento/100));
 
 console.log(compu3);
 */
+
+
+//-------------------CLASE DE ARRAYS---------------------------------------------------------
+
+//listas
+const listaCompras = ['salamin','queso','vino','coca cola','frutos secos','hielo','fernet','pan','aceitunas','paté'];
+//console.log(listaCompras[0]+' y '+listaCompras[1]);
+
+//recorrido del array
+for(let i=0; i<listaCompras.length; i++) {
+  console.log(listaCompras[i]);
+}
+
+//metodo push agrega elemento al final
+listaCompras.push('jamon');
+
+
+//metodo unshift agrega elemento desde la pos 0
+listaCompras.unshift('mortadela');
+
+//eliminar con metodos pop y shift
+listaCompras.pop();
+listaCompras.shift();
+
+//metodo splice
+listaCompras.splice(4,2)
+
+console.log(listaCompras);
