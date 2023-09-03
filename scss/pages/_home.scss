@@ -1,0 +1,39 @@
+header {
+    padding-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+        display: inline;
+        vertical-align: middle;
+}
+
+header nav.navbar div.container-fluid {
+    display:inline;
+}
+
+.card-body, .card-title, .card-text, .card-img-top, .card-subtitle, .card-text a, .cotizaciondolar, .cotizacioneuro, .cotizacionyuan {
+    background-color: white;
+}
+
+.cotizaciondolar, .cotizacioneuro, .cotizacionyuan {
+    color:black;
+}
+
+.card {
+    text-align: center;
+}
+
+.card-img-top {
+    width: 75px;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.card-text, .card-title {
+    color: black;
+}
+
+.card-subtitle {
+    padding-bottom: 15px;
+}

@@ -4,18 +4,105 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Julián LR | Home Page</title>
+    <title>GuitaFacil | Home page</title>
     <meta name="author" content="Julián Laurito Riscica" />
-    <meta name="description" content="js testing ground" />
+    <meta
+      name="description"
+      content="La casa de cambio más grande de Argentina"
+    />
     <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <header></header>
+    <header>
+      <nav class="navbar">
+        <div class="container-fluid navbar__container">
+          <a class="navbar-brand" href="#">
+            <img
+              src="./img/logo.png"
+              alt="Logo de GuitaFacil"
+              width="30"
+              height="30"
+            />
+          </a>
+          <h1 class="me-auto navbar__h1">DivisaFacil</h1>
+        </div>
+      </nav>
+    </header>
     <main>
-      <h1>Testing pelado de JavaScript</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 mb-3 mb-sm-2">
+            <div class="card">
+              <div class="card-body">
+                <img src="./img/dolar.png" class="card-img-top" alt="..." />
+                <h5 class="card-title">Dólares</h5>
+                <h6 class="card-subtitle">
+                  Cotización actual:
+                  <span class="cotizaciondolar">1074.32</span>
+                </h6>
+                <p class="card-text">
+                  Entrega inmediata por Payoneer, Utoppia o Lemon en forma de
+                  Crypto.<br />
+                  Caso contrario se entrega en un plazo de 24 horas en tu
+                  estación de servicio más cercana.
+                </p>
+                <a href="#" class="btn btn-primary">Comprá dolares</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 mb-3 mb-sm-2">
+            <div class="card">
+              <div class="card-body">
+                <img src="./img/euro.png" class="card-img-top" alt="..." />
+                <h5 class="card-title">Euros</h5>
+                <h6 class="card-subtitle">
+                  Cotización actual:
+                  <span class="cotizacioneuro"></span>$1391.10
+                </h6>
+                <p class="card-text">
+                  Se entrega en un plazo de 72 horas en tu cafeteria más
+                  cercana.
+                  <br /><br /><br />
+                </p>
+                <a href="#" class="btn btn-primary">Comprá euros</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 mb-3 mb-sm-2">
+            <div class="card">
+              <div class="card-body">
+                <img src="./img/yuan.png" class="card-img-top" alt="..." />
+                <h5 class="card-title">Yuanes</h5>
+                <h6 class="card-subtitle">
+                  Cotización actual: <span class="cotizacionyuan"></span>$780.56
+                </h6>
+                <p class="card-text">
+                  Se entrega en un plazo de 6 horas en tu ArgenChino más
+                  cercano, en caso de no tener uno cerca, revisá los convenios
+                  con la comunidad autónoma china <a href="#">acá</a>.
+                  <br />
+                </p>
+                <a href="#" class="btn btn-primary">Comprá yuanes</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <footer></footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
     <script src="./js/core.js"></script>
+    <!-- HECHO POR JULIÁN LAURITO RISCICA -->
   </body>
 </html>
