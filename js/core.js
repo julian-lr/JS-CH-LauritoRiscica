@@ -8,33 +8,93 @@ let initialValue; // Guarda el primer o anterior resultado del exchange para des
 let incrementsStore; // Guarda los incrementos para el array despues
 let exchangeResults = []; // Este array es especifico para registrar los incrementos
 
+// Fecha y hora
+const fecha = new Date();
+const opcionesFecha = {
+  day: 'numeric',
+  month: 'long'
+};
+const opcionesHora = {
+  hour: '2-digit',
+  minute: '2-digit'
+};
+
+const fechaAjustada = fecha.toLocaleString('es-AR', opcionesFecha);
+const horaAjustada = fecha.toLocaleString('es-AR', opcionesHora);
+
+//Generador de numeros para el número de operación, bastante básico
+function generaNumeroRandom() {
+  // Generar número random entre 0 y 99999999 (es de 8 digitos)
+  const numeroRandom = Math.floor(Math.random() * 100000000);
+
+  // Asegurarse de que sea de 8 digitos, en caso contrario sumarle 0s
+  const formatearNumeroGenerado = String(numeroRandom).padStart(8, '0');
+
+  return formatearNumeroGenerado;
+}
+const numeroRandomParaOperacion = generaNumeroRandom();
+
+
+
 //creación del constructor utilizando class
 class Currency {
   constructor(type, valueInARS) {
     this.type = type;
     this.valueInARS = valueInARS;
   }
-  addSolidarityTax(percentage) {
-    this.valueInARS = this.valueInARS * percentage;
-  }
 }
 
 //const de las divisas
 // const currencyDollar = new Currency('Dólares', 1074.32);
-// const currencyEuro = new Currency('Euros', 1391.10);
+// const currencyEuro = new Currency('Euros', 1391.110);
 // const currencyYuan = new Currency('Yuanes', 780.56);
 
 // Array para las divisas
 const currencies = [
-  new Currency('Dólares', 1074.32),
-  new Currency('Euros', 1391.1),
-  new Currency('Yuanes', 780.56),
+  new Currency('Dólar blue', 1074.32),
+  new Currency('Euro blue', 1391.11),
+  new Currency('Yuan blue', 780.56),
+  new Currency('Dólar MEP', (1074.32 * 1.12).toFixed(2)),
+  new Currency('Euro MEP', (1391.11 * 1.12).toFixed(2)),
+  new Currency('Yuan MEP', (780.56 * 1.12).toFixed(2)),
+  new Currency('Dólar CCL', (1074.32 * 1.23).toFixed(2)),
+  new Currency('Euro CCL', (1391.11 * 1.23).toFixed(2)),
+  new Currency('Yuan CCL', (780.56 * 1.23).toFixed(2)),
+  new Currency('Dólar crypto', (1074.32 / 1.17).toFixed(2)),
+  new Currency('Euro crypto', (1391.11 / 1.17).toFixed(2)),
+  new Currency('Yuan crypto', (780.56 / 1.17).toFixed(2)),
 ];
 
 // Ordenar las divisas por valor en orden descendente
-currencies.sort((a, b) => b.valueInARS - a.valueInARS);
+function ordenarCurrencyPorPrecioMax(ordenarCurrencies) {
+  return ordenarCurrencies.sort((a, b) => b.valueInARS - a.valueInARS);
+}
+ordenarCurrencyPorPrecioMax(currencies);
+
 // Mostrar las divisas ordenadas
 console.table(currencies);
+
+//-------------------------------------------------------------------------
+// Funcion para filtrar productos por un precio máximo, esta funcionalidad va a ser mediante un input más adelante
+function filterByMaxPrice(maxPrice) {
+    const filtered = currencies.filter((Currency) => Currency.valueInARS <= maxPrice);
+    console.table(filtered);
+}
+filterByMaxPrice(1200);
+
+//-------------------------------------------------------------------------
+
+//Separar divisas en tres arrays por tipo
+const dollarCategory = currencies.filter(currency => currency.type.includes('Dólar'));
+const euroCategory = currencies.filter(currency => currency.type.includes('Euro'));
+const yuanCurrency = currencies.filter(currency => currency.type.includes('Yuan'));
+
+//Ordenar divisas por precio máximo
+console.table(dollarCategory);
+console.table(euroCategory);
+console.table(yuanCurrency);
+
+//-------------------------------------------------------------------------
 
 // Definir constante para el valor de las currencies
 const dollarValue = currencies[0].valueInARS;
@@ -53,7 +113,7 @@ while (continueExchange) {
   //ciclo para elegir la divisa
   for (let i = 1; i <= 3; i++) {
     currencyPicked = parseInt(
-      prompt('Elija su divisa: \n 1- Dólar \n 2- Euro \n 3- Yuan')
+      prompt(`Bienvenido a DivisaFácil!\nHoy es ${fechaAjustada} y son las ${horaAjustada} hs.\n\nNúmero de operación: ${numeroRandomParaOperacion}\n\nElija su divisa: \n 1- Dólar blue\n 2- Euro blue\n 3- Yuan blue`)
     );
     if (currencyPicked == 1) {
       currencyPicked = dollarType;
