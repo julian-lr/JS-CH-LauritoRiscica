@@ -80,7 +80,8 @@ function filterByMaxPrice(maxPrice) {
     const filtered = currencies.filter((Currency) => Currency.valueInARS <= maxPrice);
     console.table(filtered);
 }
-filterByMaxPrice(1200);
+//filtrar por precio máximo con prompt
+filterByMaxPrice(parseFloat(prompt('Ingresá el precio máximo de buscas en las cotizaciones, este resultado lo verás en el 2do console.table.\n\nTené en cuenta que:\n1- No afecta al flow siguiente, es solo para demostrar su funcionalidad en un console.table.\n2- Si elegis un número menor a 667.15, la tabla va a estar vacía.')));
 
 //-------------------------------------------------------------------------
 
