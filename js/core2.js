@@ -4,250 +4,122 @@ let amountToPay;
 let finalCostUSD;
 let finalCostEUR;
 let finalCostCNY;
-let initialValue; // Guarda el primer o anterior resultado del exchange para despues sacar los incrementos
-let incrementsStore; // Guarda los incrementos para el array despues
-let exchangeResults = []; // Este array es especifico para registrar los incrementos
+let carrito = [];
 
-// Fecha y hora
+//-------------------------------------------------------------------------
+
+// fecha y hora
 const fecha = new Date();
 const opcionesFecha = {
   day: 'numeric',
-  month: 'long'
+  month: 'long',
+  year: 'numeric',
 };
 const opcionesHora = {
   hour: '2-digit',
-  minute: '2-digit'
+  minute: '2-digit',
+  second: '2-digit',
 };
 
 const fechaAjustada = fecha.toLocaleString('es-AR', opcionesFecha);
 const horaAjustada = fecha.toLocaleString('es-AR', opcionesHora);
 
-//Generador de numeros para el número de operación, bastante básico
-function generaNumeroRandom() {
-  // Generar número random entre 0 y 99999999 (es de 8 digitos)
-  const numeroRandom = Math.floor(Math.random() * 100000000);
+//-------------------------------------------------------------------------
 
-  // Asegurarse de que sea de 8 digitos, en caso contrario sumarle 0s
-  const formatearNumeroGenerado = String(numeroRandom).padStart(8, '0');
+// para simular como que el número de operaciones va cambiando, vamos a trabajar con el local storage
+let currentNumber = localStorage.getItem('currentNumber');
 
+// si no esta guardado el número, lo forzamos a que sea 0
+if (currentNumber === null) {
+  currentNumber = 0;
+} else {
+  // si está almacenado, lo analizamos como un entero
+  currentNumber = parseInt(currentNumber, 10);
+}
+
+// generador de numeros para el número de operación, bastante básico
+function generaNumeroSecuencial() {
+  // incrementa el número por cada llamada
+  currentNumber++;
+  // se asegura de que sea de 8 digitos, en caso contrario sumarle 0s antes
+  const formatearNumeroGenerado = String(currentNumber).padStart(8, '0');
+  // Almacenamos el número en el local storage
+  localStorage.setItem('currentNumber', currentNumber.toString());
   return formatearNumeroGenerado;
 }
-const numeroRandomParaOperacion = generaNumeroRandom();
+const numeroDeOperacion = generaNumeroSecuencial();
 
-//creación del constructor utilizando class
-class Currency {
-  constructor(type, valueInARS) {
-    this.type = type;
-    this.valueInARS = valueInARS;
-  }
-}
+//-------------------------------------------------------------------------
 
-//const de las divisas
-// const currencyDollar = new Currency('Dólares', 1074.32);
-// const currencyEuro = new Currency('Euros', 1391.110);
-// const currencyYuan = new Currency('Yuanes', 780.56);
-
-// Array para las divisas
-const currencies = [
-  new Currency('Dólar blue', 1074.32),
-  new Currency('Euro blue', 1391.11),
-  new Currency('Yuan blue', 780.56),
-  new Currency('Dólar MEP', (1074.32 * 1.12).toFixed(2)),
-  new Currency('Euro MEP', (1391.11 * 1.12).toFixed(2)),
-  new Currency('Yuan MEP', (780.56 * 1.12).toFixed(2)),
-  new Currency('Dólar CCL', (1074.32 * 1.23).toFixed(2)),
-  new Currency('Euro CCL', (1391.11 * 1.23).toFixed(2)),
-  new Currency('Yuan CCL', (780.56 * 1.23).toFixed(2)),
-  new Currency('Dólar crypto', (1074.32 / 1.17).toFixed(2)),
-  new Currency('Euro crypto', (1391.11 / 1.17).toFixed(2)),
-  new Currency('Yuan crypto', (780.56 / 1.17).toFixed(2)),
-];
-
-// Ordenar las divisas por valor en orden descendente
-function ordenarCurrencyPorPrecioMax(ordenarCurrencies) {
-  return ordenarCurrencies.sort((a, b) => b.valueInARS - a.valueInARS);
-}
-
-// Mostrar las divisas
 console.table(currencies);
+console.log(numeroDeOperacion);
 
 //-------------------------------------------------------------------------
-// Funcion para filtrar productos por un precio máximo, esta funcionalidad va a ser mediante un input más adelante
-function filterByMaxPrice(maxPrice) {
-    const filtered = currencies.filter((Currency) => Currency.valueInARS <= maxPrice);
-    console.table(filtered);
+
+// renderizar divisas
+const contenedorDivisas = document.getElementById('divisas');
+
+// funcion para generar las tarjetas de las divisas
+function renderizarDivisas(listaDivisas) {
+  for (const divisa of listaDivisas) {
+    contenedorDivisas.innerHTML += `
+    <div class="card mx-auto my-3 gap-1 col-8 col-sm-6 col-md-5 col-lg-3">
+      <img src="${divisa.img}" class="card-img-top" alt="${divisa.type}" />
+      <div class="card-body">
+        <h5 class="card-title">${divisa.type}</h5>
+        <h6 class="card-subtitle">
+                  Cotización actual:
+                  <span>$${divisa.valueInARS}</span>
+        </h6>
+        <p class="card-text">
+        Entrega en  : ${divisa.delivery}
+        <br><br>
+        ${divisa.description}
+        </p>
+        <button id="${divisa.id}" href="#" class="btn btn-warning compra">
+          Comprar
+        </button>
+      </div>
+    </div>
+    `;
+  }
 }
-//filtrar por precio máximo con prompt
-filterByMaxPrice(parseFloat(prompt('Ingresá el precio máximo de buscas en las cotizaciones, este resultado lo verás en el 2do console.table.\n\nTené en cuenta que:\n1- No afecta al flow siguiente, es solo para demostrar su funcionalidad en un console.table.\n2- Si elegis un número menor a 667.15, la tabla va a estar vacía.')));
 
-//-------------------------------------------------------------------------
+renderizarDivisas(currencies);
 
-//Separar divisas en tres arrays por tipo
-const dollarCategory = currencies.filter(currency => currency.type.includes('Dólar'));
-const euroCategory = currencies.filter(currency => currency.type.includes('Euro'));
-const yuanCurrency = currencies.filter(currency => currency.type.includes('Yuan'));
+// loggeo de click para posterior generación de carrito
+let buttons = document.getElementsByClassName('compra');
 
-//Ordenar divisas por precio máximo
-console.table(ordenarCurrencyPorPrecioMax(dollarCategory));
-console.table(ordenarCurrencyPorPrecioMax(euroCategory));
-console.table(ordenarCurrencyPorPrecioMax(yuanCurrency));
+for (const button of buttons) {
+  button.addEventListener('click', () => {
+    console.log(`hiciste click en el boton id ${button.id}`);
+    const divACarro = currencies.find((divisa) => divisa.id == button.id);
+    console.log(divACarro);
+    agregarAlCarrito(divACarro);
 
-//-------------------------------------------------------------------------
+  });
 
-// Definir constante para el valor de las currencies
-const dollarValue = currencies[0].valueInARS;
-const euroValue = currencies[1].valueInARS;
-const yuanValue = currencies[2].valueInARS;
+  button.onmouseover = () =>
+  button.classList.replace('btn-warning', 'btn-secondary');
+  button.onmouseout = () =>
+  button.classList.replace('btn-secondary', 'btn-warning');
+}
 
-// Definir constante para el tipo de las currencies
-const dollarType = currencies[0].type;
-const euroType = currencies[1].type;
-const yuanType = currencies[2].type;
 
-//variable para iniciar el while loop
-let continueExchange = true;
+// tablaBody para loggear que este agregando bien al carrito con el html
+const tablaBody = document.getElementById('tablaBody');
 
-while (continueExchange) {
-  //ciclo para elegir la divisa
-  for (let i = 1; i <= 3; i++) {
-    currencyPicked = parseInt(
-      prompt(`Bienvenido a DivisaFácil!\nHoy es ${fechaAjustada} y son las ${horaAjustada} hs.\n\nNúmero de operación: ${numeroRandomParaOperacion}\n\nElija su divisa: \n 1- Dólar blue\n 2- Euro blue\n 3- Yuan blue`)
-    );
-    if (currencyPicked == 1) {
-      currencyPicked = dollarType;
-      console.log('eligió dolar');
-      break;
-    } else if (currencyPicked == 2) {
-      currencyPicked = euroType;
-      console.log('eligió euro');
-      break;
-    } else if (currencyPicked == 3) {
-      currencyPicked = yuanType;
-      console.log('eligió yuan');
-      break;
-    } else {
-      alert('Valor incorrecto. Te quedan ' + (3 - i) + ' intentos.');
-    }
-  }
+function agregarAlCarrito(divisa) {
+  carrito.push(divisa);
+  console.table(carrito);
+  alert(`Agregaste ${divisa.type} al carrito`);
 
-  //prompt para ingresar la cantidad de divisas a comprar
-  let amountToBuy = parseFloat(
-    prompt(
-      'Ingresá cuántos ' + currencyPicked.toLowerCase() + ' queres comprar.'
-    )
-  );
-
-  //función de cálculo de la divisa
-  function calculateExchange() {
-    const solidarityMultiplier = 1.75;
-    const disparoCambiario1 = 1.35;
-    const disparoCambiario2 = 1.55;
-
-    // Resetea el initialValue e incrementsStore para cada reinicio de proceso
-    initialValue = 0;
-    incrementsStore = 0;
-
-    // Si el usuario eligio dolares
-    if (currencyPicked == dollarType) {
-      amountToPay = (amountToBuy * dollarValue).toFixed(2);
-      initialValue = amountToPay;
-      alert(
-        'Para comprar $' + amountToBuy + ' USD, te va a costar $' + amountToPay
-      );
-      amountToPay = (amountToPay * disparoCambiario1).toFixed(2);
-      incrementsStore = amountToPay - initialValue;
-      exchangeResults.push({ currency: currencyPicked, incrementsStore });
-      initialValue = amountToPay;
-      alert(
-        'Ah no banca, subió el dolar.\nPara comprar $' +
-          amountToBuy +
-          ' USD, te va a costar $' +
-          amountToPay
-      );
-      amountToPay = (amountToPay * disparoCambiario2).toFixed(2);
-      incrementsStore = amountToPay - initialValue;
-      exchangeResults.push({ currency: currencyPicked, incrementsStore });
-      initialValue = amountToPay;
-      alert(
-        'Ufff que garrón, se disparó de vuelta el dólar... Ya parece el bitcoin!\nPara comprar $' +
-          amountToBuy +
-          ' USD, te va a costar $' +
-          amountToPay
-      );
-      amountToPay = (amountToPay * solidarityMultiplier).toFixed(2);
-      incrementsStore = amountToPay - initialValue;
-      exchangeResults.push({ currency: currencyPicked, incrementsStore });
-      initialValue = amountToPay;
-      alert(
-        'Ayyyyyyyyy perdón! Me falto calcularte el nuevo y generosísimo aporte solidario.\nPara comprar $' +
-          amountToBuy +
-          ' USD, te va a costar $' +
-          amountToPay
-      );
-    }
-    // Si el usuario eligio euros
-    else if (currencyPicked == euroType) {
-      amountToPay = (amountToBuy * euroValue).toFixed(2);
-      initialValue = amountToPay;
-      alert(
-        'Para comprar $' + amountToBuy + ' EUR, te va a costar $' + amountToPay
-      );
-      amountToPay = (amountToPay * disparoCambiario2).toFixed(2);
-      incrementsStore = amountToPay - initialValue;
-      exchangeResults.push({ currency: currencyPicked, incrementsStore });
-      initialValue = amountToPay;
-      alert(
-        'Ah no banca, subió el euro.\nPara comprar $' +
-          amountToBuy +
-          ' EUR, te va a costar $' +
-          amountToPay
-      );
-      amountToPay = (amountToPay * solidarityMultiplier).toFixed(2);
-      incrementsStore = amountToPay - initialValue;
-      exchangeResults.push({ currency: currencyPicked, incrementsStore });
-      initialValue = amountToPay;
-      alert(
-        'Perdón! Me falto calcularte el nuevo y generosísimo aporte solidario.\nPara comprar $' +
-          amountToBuy +
-          ' EUR, te va a costar $' +
-          amountToPay
-      );
-    }
-    // Si el usuario eligio yuanes
-    else if (currencyPicked == yuanType) {
-      amountToPay = (amountToBuy * yuanValue).toFixed(2);
-      initialValue = amountToPay;
-      alert(
-        'Para comprar $' + amountToBuy + ' CNY, te va a costar $' + amountToPay
-      );
-      amountToPay = (amountToPay * solidarityMultiplier).toFixed(2);
-      incrementsStore = amountToPay - initialValue;
-      exchangeResults.push({ currency: currencyPicked, incrementsStore });
-      initialValue = amountToPay;
-      alert(
-        'Perdón! Me falto calcularte el nuevo y generosísimo aporte solidario.\nPara comprar $' +
-          amountToBuy +
-          ' CNY, te va a costar $' +
-          amountToPay
-      );
-    }
-    // Si el usuario tiene ganas de romper las normas
-    else {
-      alert('Me rompiste,¡gracias!');
-    }
-  }
-
-  // ejecucion de la funcion and store the result in the array
-  calculateExchange();
-
-  // Llevar el resultado al array de exchangeResults
-  console.table(exchangeResults);
-
-  const doYouWantToContinue = prompt(
-    'Querés cotizar otras monedas, o evaluar con otro número? (Si/No)'
-  ).toLowerCase();
-
-  if (doYouWantToContinue !== 'si') {
-    continueExchange = false;
-  }
+  //agregar producto a la tabla
+  tablaBody.innerHTML += `
+    <tr>
+        <td>${divisa.id}</td>
+        <td>${divisa.type}</td>
+        <td>${divisa.valueInARS}</td>
+    </tr>
+    `;
 }

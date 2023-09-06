@@ -39,18 +39,13 @@ header nav.navbar div.container-fluid {
   background-color: white;
 }
 
-.cotizaciondolar, .cotizacioneuro, .cotizacionyuan {
-  color: black;
-}
-
 .card {
   text-align: center;
+  display: inline;
 }
 
 .card-img-top {
-  width: 75px;
-  height: auto;
-  padding-bottom: 10px;
+  max-width: 150px;
 }
 
 .card-text, .card-title {
@@ -59,6 +54,15 @@ header nav.navbar div.container-fluid {
 
 .card-subtitle {
   padding-bottom: 15px;
+}
+
+.card-subtitle span {
+  background-color: white;
+  color: black;
+}
+
+.container.text-center {
+  text-align: center;
 }
 
 /*# sourceMappingURL=styles.css.map */
