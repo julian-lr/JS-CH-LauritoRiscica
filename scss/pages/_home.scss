@@ -15,6 +15,14 @@ header nav.navbar div.container-fluid {
   display: inline;
 }
 
+//ajuste del container de las cards
+.container.text-center, .container.text-center .row {
+  width: 80vw;
+  float:right;
+  background-color:#252c2d;
+  box-shadow: inset 0 0 10px black;
+}
+
 //fix para la card y sus childs
 .card-body,
 .card-title,
@@ -42,10 +50,6 @@ header nav.navbar div.container-fluid {
   padding-bottom: 15px;
 }
 
-.container.text-center {
-  text-align: center;
-}
-
 // ajuste de overlay
 .overlay {
   display: none;
@@ -70,7 +74,7 @@ header nav.navbar div.container-fluid {
   }
   input {
     text-align: center;
-    width:100%;
+    width: 100%;
     margin-bottom: 5px;
     border-radius: 0.375rem;
   }
@@ -79,4 +83,27 @@ header nav.navbar div.container-fluid {
     color: white;
     margin-top: 20px;
   }
+}
+
+//ajuste del container-aside y los filtros
+.container-aside {
+  color: white;
+  display: inline;
+  width: 200px;
+  height: 100vh;
+  position:absolute;
+  padding: 0 0 0 15px;
+}
+
+.container-aside,
+.container-aside div,
+.container-aside p,
+.container-aside ul,
+.container-aside li,
+.container-aside label {
+  color: white;
+}
+
+.container-aside div {
+  padding: 10px 0;
 }

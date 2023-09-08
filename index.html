@@ -37,6 +37,71 @@
     </header>
     <main>
       <div id="overlay" class="overlay"></div>
+      <div class="container-aside">
+        <div class="type">
+          <p>Tipo de divisa</p>
+          <ul>
+            <li>
+              <input type="checkbox" name="dolar" id="dolar" />
+              <label for="dolar">Dólares</label>
+            </li>
+            <li>
+              <input type="checkbox" name="euro" id="euro" />
+              <label for="euro">Euros</label>
+            </li>
+            <li>
+              <input type="checkbox" name="yuan" id="yuan" />
+              <label for="yuan">Yuanes</label>
+            </li>
+          </ul>
+        </div>
+        <div class="delivery">
+          <p>Medio de entrega</p>
+          <ul>
+            <li>
+              <input type="checkbox" name="inperson" id="inperson" />
+              <label for="inperson">En persona</label>
+            </li>
+            <li>
+              <input type="checkbox" name="inbank" id="inbank" />
+              <label for="inbank">Cuenta de banco</label>
+            </li>
+            <li>
+              <input type="checkbox" name="inaffiliate" id="inaffiliate" />
+              <label for="inaffiliate">Tarjeta de socio</label>
+            </li>
+            <li>
+              <input type="checkbox" name="inagent" id="inagent" />
+              <label for="inagent">Agente</label>
+            </li>
+            <li>
+              <input type="checkbox" name="inwallet" id="inwallet" />
+              <label for="inwallet">Wallet digital</label>
+            </li>
+          </ul>
+        </div>
+        <div class="time">
+          <p>Tiempos de entrega</p>
+          <ul>
+            <li>
+              <input type="checkbox" name="u1" id="u1" />
+              <label for="u1">&lt; 1 hora</label>
+            </li>
+            <li>
+              <input type="checkbox" name="u12" id="u12" />
+              <label for="u12">&lt; 12 horas</label>
+            </li>
+            <li>
+              <input type="checkbox" name="u24" id="u24" />
+              <label for="u24">&lt; 24 horas</label>
+            </li>
+            <li>
+              <input type="checkbox" name="u48" id="u48" />
+              <label for="u48">&lt; 48 horas</label>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div class="container text-center">
         <div id="divisas" class="row gap-1">
           <!-- acá van las divisas -->
@@ -51,6 +116,7 @@
     ></script>
     <script src="./js/divisas.js"></script>
     <script src="./js/core2.js"></script>
+    <!-- <script src="./js/backup-codigo-de-clases-all.js"></script> -->
     <!-- HECHO POR JULIÁN LAURITO RISCICA -->
   </body>
 </html>

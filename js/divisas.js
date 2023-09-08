@@ -79,7 +79,7 @@ const currencies = [
   new Currency(
     'Euros CCL',
     (1391.11 * 1.23).toFixed(2),
-    '1 a 3 hs',
+    '3 a 12 hs',
     'Se acredita en tu cuenta comitente de tu agente de preferencia en el exterior.',
     './img/euro.png',
     'Agente',
