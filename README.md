@@ -1,2 +1,2 @@
 # JS-CH-LauritoRiscica
-IGNORAR CORE2.JS Y DIVISAS.JS POR AHORA.
+Ignorar core.js, es un backup de la funcionalidad vieja.
