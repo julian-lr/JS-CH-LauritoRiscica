@@ -15,12 +15,15 @@ header nav.navbar div.container-fluid {
   display: inline;
 }
 
+.container.text-center {
+  height: 100vh;
+}
+
 //ajuste del container de las cards
 .container.text-center, .container.text-center .row {
   width: 80vw;
   float:right;
   background-color:#252c2d;
-  box-shadow: inset 0 0 10px black;
 }
 
 //fix para la card y sus childs
@@ -38,6 +41,7 @@ header nav.navbar div.container-fluid {
 .card {
   text-align: center;
   display: inline;
+  box-shadow: 0 0 10px black;
 }
 
 //ajuste img de cada card

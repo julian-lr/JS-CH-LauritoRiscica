@@ -52,7 +52,7 @@ const currencies = [
   new Currency(
     'Euros MEP',
     (1391.11 * 1.12).toFixed(2),
-    '3 a 6 hs',
+    '12 a 24 hs',
     'Se transfiere a tu cuenta bancaria en el exterior.',
     './img/euro.png',
     'Cuenta de banco',
