@@ -5,7 +5,7 @@ function showCurrencyOverlayFiltered(currencyId) {
     //constantes
     const contenedorOverlay = document.getElementById('overlay');
     const closeOverlay = document.getElementById('closeOverlay');
-    const divisaFiltrada = filtrarCurrencies.find((divisaFiltrada) => divisaFiltrada.id == currencyId);
+    const divisaFiltrada = currenciesFiltradas.find((divisaFiltrada) => divisaFiltrada.id == currencyId);
     //ingreso HTML
     contenedorOverlay.innerHTML += `
         <div class="card mx-auto col-5">

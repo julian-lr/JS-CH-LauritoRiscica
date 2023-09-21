@@ -75,6 +75,7 @@ const currenciesFiltradas = currencies.filter((currency) => {
 
   // renderizar esas divisas
   renderizarDivisas(currenciesFiltradas);
+  console.table(currenciesFiltradas);
 }
 
 // agregar event listeners a los checkboxes
