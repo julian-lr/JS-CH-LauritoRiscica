@@ -13,11 +13,11 @@ const u12 = document.getElementById('u12');
 const u24 = document.getElementById('u24');
 const u48 = document.getElementById('u48');
 
-// Function to update filtered currencies based on selected checkboxes
+// funcion para actualizar las divisas filtradas basada en los checkboxes
 function filtrarCurrencies() {
   const filtrosSeleccionados = [];
 
-  // Check which currency types are selected
+  // revisar cuales divisas estan seleccionadas
   if (choseDolar.checked) {
     filtrosSeleccionados.push('Dólar');
   }
@@ -28,7 +28,24 @@ function filtrarCurrencies() {
     filtrosSeleccionados.push('Yuan');
   }
 
-  // Check which delivery times are selected
+  // revisar cuales divisas estan seleccionadas
+  if (inPerson.checked) {
+    filtrosSeleccionados.push('En persona');
+  }
+  if (inBank.checked) {
+    filtrosSeleccionados.push('Cuenta de banco');
+  }
+  if (inAffiliate.checked) {
+    filtrosSeleccionados.push('Tarjeta de socio');
+  }
+  if (inAgent.checked) {
+    filtrosSeleccionados.push('Agente');
+  }
+  if (inWallet.checked) {
+    filtrosSeleccionados.push('Wallet digital');
+  }
+
+  // revisar tiempo de entrega seleccionados
   if (u1.checked) {
     filtrosSeleccionados.push('30 min', '15 min');
   }
@@ -42,25 +59,33 @@ function filtrarCurrencies() {
     filtrosSeleccionados.push('30 min', '15 min', '3 hs', ' 6 hs', '12 hs', '24 hs', '48 hs');
   }
 
-// Filter currencies based on selected types and times
+// filtrar divisas segun su tipo y su tiempo de entrega
 const currenciesFiltradas = currencies.filter((currency) => {
   const matchesFilters = filtrosSeleccionados.length === 0 || filtrosSeleccionados.some(
     (filter) =>
-      currency.type.includes(filter) || currency.delivery.includes(filter)
+    (currency.type.includes(filter) || 
+    currency.delivery.includes(filter) ||
+    currency.location.includes(filter)
+    ) 
   );
 
   return matchesFilters;
 });
 
 
-  // Render the filtered currencies
+  // renderizar esas divisas
   renderizarDivisas(currenciesFiltradas);
 }
 
-// Add event listeners to currency type and delivery time checkboxes
+// agregar event listeners a los checkboxes
 choseDolar.addEventListener('change', filtrarCurrencies);
 choseEuro.addEventListener('change', filtrarCurrencies);
 choseYuan.addEventListener('change', filtrarCurrencies);
+inPerson.addEventListener('change', filtrarCurrencies);
+inBank.addEventListener('change', filtrarCurrencies);
+inAffiliate.addEventListener('change', filtrarCurrencies);
+inAgent.addEventListener('change', filtrarCurrencies);
+inWallet.addEventListener('change', filtrarCurrencies);
 u1.addEventListener('change', filtrarCurrencies);
 u12.addEventListener('change', filtrarCurrencies);
 u24.addEventListener('change', filtrarCurrencies);
