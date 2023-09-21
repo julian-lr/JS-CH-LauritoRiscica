@@ -28,7 +28,7 @@ function filtrarCurrencies() {
     filtrosSeleccionados.push('Yuan');
   }
 
-  // revisar cuales divisas estan seleccionadas
+  // revisar medio de entrega deseado
   if (inPerson.checked) {
     filtrosSeleccionados.push('En persona');
   }
@@ -59,7 +59,7 @@ function filtrarCurrencies() {
     filtrosSeleccionados.push('30 min', '15 min', '3 hs', ' 6 hs', '12 hs', '24 hs', '48 hs');
   }
 
-// filtrar divisas segun su tipo y su tiempo de entrega
+// filtrar divisas segun su tipo, su tiempo de entrega y medio de entrega
 const currenciesFiltradas = currencies.filter((currency) => {
   const matchesFilters = filtrosSeleccionados.length === 0 || filtrosSeleccionados.some(
     (filter) =>
