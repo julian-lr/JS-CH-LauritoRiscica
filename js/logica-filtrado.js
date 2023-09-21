@@ -61,7 +61,7 @@ function filtrarCurrencies() {
 
 // filtrar divisas segun su tipo, su tiempo de entrega y medio de entrega
 const currenciesFiltradas = currencies.filter((currency) => {
-  const matchesFilters = filtrosSeleccionados.length === 0 || filtrosSeleccionados.some(
+  const filtrosCheckeados = filtrosSeleccionados.length === 0 || filtrosSeleccionados.some(
     (filter) =>
     (currency.type.includes(filter) || 
     currency.delivery.includes(filter) ||
@@ -69,7 +69,7 @@ const currenciesFiltradas = currencies.filter((currency) => {
     ) 
   );
 
-  return matchesFilters;
+  return filtrosCheckeados;
 });
 
 
