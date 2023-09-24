@@ -24,6 +24,7 @@ function showCurrencyOverlay(currencyId) {
               Ingresá cuanto querés comprar:
               <input type="text" name="cantidad" id="cantidad" placeholder="Ingresá un valor"/>
             </label>
+            <p class="card-text">Estarás abonando:<br>calculador no realizado aun.</p>
           <input id="${divisa.id}" type="submit" value="Comprar" class="btn btn-success" />
           </form>
           <button id="closeOverlay" class="btn btn-cancel">Cancelar</button>
