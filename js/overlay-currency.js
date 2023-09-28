@@ -1,3 +1,6 @@
+//array de divisas que compra el user
+const currenciesCompradas = [];
+
 //mostrar overlay cuando se decide comprar una currency
 function showCurrencyOverlay(currencyId) {
   //constantes
@@ -25,17 +28,22 @@ function showCurrencyOverlay(currencyId) {
               <input type="text" name="cantidad" id="cantidad" placeholder="Ingresá un valor"/>
             </label>
             <p class="card-text">Estarás abonando:<br>calculador no realizado aun.</p>
-          <button id="${divisa.id}" class="btn btn-success" />Comprar</button>
           </form>
+          <button id="comprarDivisa" class="btn btn-success btn-exito">Comprar</button>
+          <br>
           <button id="closeOverlay" class="btn btn-cancel">Cancelar</button>
         </div>
       </div>
       `;
-  contenedorOverlay.style.display = "block";
-  
+  contenedorOverlay.style.display = 'block';
+
+  const botonComprar = document.getElementById('comprarDivisa');
+  botonComprar.addEventListener('click', guardarOperaciones(divisa));
+
+  //============= ACA EMPIEZA LA ACCION DE CANCELAR==============
   // escucha al click del boton cancelar y cerrar overlay al clickear
-  document.getElementById("closeOverlay").addEventListener("click", () => {
-    contenedorOverlay.style.display = "none";
+  document.getElementById('closeOverlay').addEventListener("click", () => {
+    contenedorOverlay.style.display = 'none';
 
     // while para borrar todos los childs que puedan existir dentro del overlay para evitar generar cards de más
     while (contenedorOverlay.firstChild) {

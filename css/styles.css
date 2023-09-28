@@ -140,8 +140,8 @@ button.navbar-toggler {
   float: right;
 }
 
-div.overlay input.btn.btn-success {
-  max-width: 100px;
+div.overlay button.btn.btn-success {
+  margin: 10px 0;
 }
 
 /*# sourceMappingURL=styles.css.map */

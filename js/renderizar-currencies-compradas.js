@@ -1,8 +1,6 @@
-const buttonComprar = document.getElementsByClassName("btn-success");
-
-buttonComprar.addEventListener("click", () => {
-  const currenciesCompradas = [];
-
-  currenciesCompradas.push(divisa);
+function guardarOperaciones(divisaSeleccionada) {
+  const contenedorOverlay = document.getElementById("overlay");
+  currenciesCompradas.push(divisaSeleccionada);
   console.log(currenciesCompradas);
-});
+  contenedorOverlay.style.display = "none";
+}
