@@ -21,37 +21,34 @@ img {
   max-width: 100%;
 }
 
-header {
-  padding-bottom: 1rem;
-}
-
 h1 {
   font-size: 2rem;
   display: inline;
   vertical-align: middle;
 }
 
-div.collapse.navbar-collapse {
-  padding-top: 10px;
-}
-
 h2 {
   display: inline;
   font-size: 1.5rem;
-  margin-bottom: 10px;
 }
 
 header nav.navbar div.container-fluid {
   display: inline;
+  width: 100%;
+  padding: 0;
+}
+header nav.navbar div.container-fluid div.topnav {
+  padding: 5px 0 15px 0;
 }
 
 .container.text-center {
   height: 100vh;
+  width: 60vw;
 }
 
 .container.text-center,
 .container.text-center .row {
-  width: 80vw;
+  width: 60vw;
   float: right;
   background-color: #252c2d;
 }
@@ -117,10 +114,16 @@ header nav.navbar div.container-fluid {
 .container-aside {
   color: white;
   display: inline;
-  width: 200px;
+  width: 42vw;
   height: 100vh;
   position: absolute;
-  padding: 0 0 0 15px;
+  padding: 5px 0 0 5px;
+}
+.container-aside p {
+  margin-bottom: 5px;
+}
+.container-aside ul {
+  padding: 0 0 0 5px;
 }
 
 .container-aside,
@@ -132,16 +135,76 @@ header nav.navbar div.container-fluid {
   color: white;
 }
 
-.container-aside div {
-  padding: 10px 0;
-}
-
 button.navbar-toggler {
   float: right;
 }
 
 div.overlay button.btn.btn-success {
   margin: 10px 0;
+}
+
+div.collapse.navbar-collapse {
+  background-color: #12373f;
+  padding: 20px 20px 5px 20px;
+}
+div.collapse.navbar-collapse h2 {
+  background-color: inherit;
+}
+
+div.container.container-operaciones {
+  margin: 15px 0 0 0;
+  background-color: #12373f;
+  max-width: 100%;
+  padding: 0;
+}
+div.container.container-operaciones .operacion {
+  display: inline;
+  background-color: #12373f;
+  max-height: 90px;
+  width: 100%;
+}
+div.container.container-operaciones .operacion .operacion-side-img {
+  max-height: 75px;
+  max-width: 75px;
+  float: left;
+  margin-top: 20px;
+  background-color: #12373f;
+}
+div.container.container-operaciones .operacion .operacion-body {
+  background-color: #12373f;
+  text-align: right;
+  border-bottom: 2px solid yellow;
+  padding-top: 15px;
+}
+div.container.container-operaciones .operacion .operacion-body h5,
+div.container.container-operaciones .operacion .operacion-body h6,
+div.container.container-operaciones .operacion .operacion-body p {
+  background-color: #12373f;
+}
+
+@media (min-width: 700px) {
+  .container.text-center {
+    width: 80vw;
+  }
+  .container.text-center,
+  .container.text-center .row {
+    width: 80vw;
+  }
+  .container-aside {
+    width: 22vw;
+  }
+}
+@media (min-width: 1000px) {
+  .container.text-center {
+    width: 85vw;
+  }
+  .container.text-center,
+  .container.text-center .row {
+    width: 85vw;
+  }
+  .container-aside {
+    width: 15vw;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -23,30 +23,32 @@
     <header>
       <nav class="navbar">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img
-              src="./img/logo.png"
-              alt="Logo de DivisaFacil"
-              width="30"
-              height="30"
-            />
-          </a>
-          <h1 class="me-auto navbar__h1">DivisaFacil</h1>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarText"
-            aria-controls="navbarText"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          <div class="topnav">
+            <a class="navbar-brand" href="#">
+              <img
+                src="./img/logo.png"
+                alt="Logo de DivisaFacil"
+                width="30"
+                height="30"
+              />
+            </a>
+            <h1 class="me-auto navbar__h1">DivisaFacil</h1>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarText"
+              aria-controls="navbarText"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
           <div class="collapse navbar-collapse" id="navbarText">
-            <h2 class="ms-auto">Operaciones anteriores:</h2>
-            <div class="container">
-              <div id="divisasCompradas" class="row gap-1">
+            <h2>Operaciones anteriores:</h2>
+            <div class="container container-operaciones">
+              <div id="contenedorOperaciones" class="subcontenedor-operaciones">
                 <!-- acá van las divisas compradas -->
               </div>
             </div>
@@ -140,7 +142,8 @@
     <script src="./js/logica-filtrado.js"></script>
     <script src="./js/estilizacion-boton.js"></script>
     <script src="./js/overlay-currency.js"></script>
-<script src="./js/renderizar-currencies-compradas.js"></script>
+    <script src="./js/renderizar-currencies-compradas.js"></script>
+    <script src="./js/guardar-currencies-compradas.js"></script>
     <!-- HECHO POR JULIÁN LAURITO RISCICA -->
   </body>
 </html>
