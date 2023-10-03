@@ -1,3 +1,5 @@
+// Obsoleto tras el pasaje a divisas.json en /data/
+
 // class + Constructor para darle formato al array de las currencies ----------------------------------
 class Currency {
   constructor(type, valueInARS, delivery, description, img, location, id) {

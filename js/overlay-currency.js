@@ -38,7 +38,7 @@ function showCurrencyOverlay(currencyId) {
   contenedorOverlay.style.display = 'block';
 
   const botonComprar = document.getElementById('comprarDivisa');
-  botonComprar.addEventListener('click', guardarOperaciones(divisa));
+  // botonComprar.addEventListener('click', guardarOperaciones(divisa));
 
   //============= ACA EMPIEZA LA ACCION DE CANCELAR==============
   // escucha al click del boton cancelar y cerrar overlay al clickear

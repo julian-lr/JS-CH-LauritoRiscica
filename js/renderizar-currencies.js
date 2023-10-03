@@ -1,10 +1,10 @@
 // renderizar divisas
-const contenedorDivisas = document.getElementById('divisas');
+const contenedorDivisas = document.getElementById("divisas");
 
 // funcion para generar las tarjetas de las divisas
 function renderizarDivisas(listaDivisas) {
   // vacia primero el contenedor
-  contenedorDivisas.innerHTML = '';
+  contenedorDivisas.innerHTML = "";
 
   // genera las cards con un for con cada contenido
   for (const divisa of listaDivisas) {
@@ -30,5 +30,3 @@ function renderizarDivisas(listaDivisas) {
     `;
   }
 }
-
-renderizarDivisas(currencies);

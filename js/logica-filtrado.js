@@ -93,15 +93,15 @@ function filtrarCurrencies() {
   console.table(currenciesFiltradas);
 
   for (const button of buttons) {
-    button.addEventListener('click', () => {
+    button.onmouseover = () =>
+      button.classList.replace("btn-warning", "btn-secondary");
+    button.onmouseout = () =>
+      button.classList.replace("btn-secondary", "btn-warning");
+    button.addEventListener("click", () => {
       const divACarro = currencies.find((divisa) => divisa.id == button.id);
       const currencyId = parseInt(button.id);
       showCurrencyOverlay(currencyId);
     });
-    button.onmouseover = () =>
-      button.classList.replace('btn-warning', 'btn-secondary');
-    button.onmouseout = () =>
-      button.classList.replace('btn-secondary', 'btn-warning');
   }
 }
 
