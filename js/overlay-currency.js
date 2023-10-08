@@ -1,5 +1,6 @@
 //array de divisas que compra el user
-let currenciesCompradas = JSON.parse(localStorage.getItem('currenciesCompradas')) || [];
+let currenciesCompradas =
+  JSON.parse(localStorage.getItem('currenciesCompradas')) || [];
 
 //mostrar overlay cuando se decide comprar una currency
 function showCurrencyOverlay(currencyId) {
@@ -69,11 +70,27 @@ function showCurrencyOverlay(currencyId) {
     const montoPagado = parseFloat(outputValor.innerHTML.substring(1));
 
     if (!isNaN(cantidadComprada)) {
-      guardarOperaciones(divisa, cantidadComprada, montoPagado.toFixed(2)); 
+      guardarOperaciones(divisa, cantidadComprada, montoPagado.toFixed(2));
       contenedorOverlay.style.display = 'none';
-      contenedorOverlay.innerHTML = "";
+      contenedorOverlay.innerHTML = '';
+      Toastify({
+        text: `Compra realizada! Recordá que el plazo de entrega es de ${divisa.delivery}.`,
+        duration: 3000,
+        gravity: 'bottom',
+        style: {
+          background: 'linear-gradient(to right, #007027, #199600)',
+        },
+      }).showToast();
     } else {
       console.error('Valor invalido');
+      Toastify({
+        text: 'Valor inválido!',
+        duration: 3000,
+        gravity: 'bottom',
+        style: {
+          background: 'linear-gradient(to right, #B80022, #FC3B00)',
+        },
+      }).showToast();
     }
   });
 }
