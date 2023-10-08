@@ -25,7 +25,7 @@ function showCurrencyOverlay(currencyId) {
           <form id="formulario">
           <label for="cantidad">
               Ingresá cuanto querés comprar:
-              <input type="text" name="cantidad" id="cantidad" placeholder="Ingresá un valor"/>
+              <input type="text" name="cantidad" id="cantidadComprar" placeholder="Ingresá un valor"/>
             </label>
             <p class="card-text">Estarás abonando:<br>calculador no realizado aun.</p>
           </form>
@@ -39,6 +39,10 @@ function showCurrencyOverlay(currencyId) {
 
   const botonComprar = document.getElementById('comprarDivisa');
   // botonComprar.addEventListener('click', guardarOperaciones(divisa));
+
+  const inputAmount = document.getElementById('cantidadComprar');
+
+
 
   //============= ACA EMPIEZA LA ACCION DE CANCELAR==============
   // escucha al click del boton cancelar y cerrar overlay al clickear
