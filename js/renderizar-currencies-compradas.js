@@ -1,4 +1,4 @@
-// Add an event listener to run code after the page has loaded
+//agregar event listener on load
 document.addEventListener('DOMContentLoaded', function () {
   const operacionesGuardadas = JSON.parse(localStorage.getItem('currenciesCompradas')) || [];
 
