@@ -71,6 +71,7 @@ function showCurrencyOverlay(currencyId) {
     if (!isNaN(cantidadComprada)) {
       guardarOperaciones(divisa, cantidadComprada, montoPagado.toFixed(2)); 
       contenedorOverlay.style.display = 'none';
+      contenedorOverlay.innerHTML = "";
     } else {
       console.error('Valor invalido');
     }
