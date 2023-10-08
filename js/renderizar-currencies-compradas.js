@@ -1,8 +1,15 @@
+// Add an event listener to run code after the page has loaded
+document.addEventListener('DOMContentLoaded', function () {
+  const operacionesGuardadas = JSON.parse(localStorage.getItem('currenciesCompradas')) || [];
+
+  renderizarListaOperaciones(operacionesGuardadas);
+});
+
 // renderizar operaciones
 const contenedorOperaciones = document.getElementById("contenedorOperaciones");
 
 //function para generar la lista de operaciones
-function renderizarListaOperaciones(listaOperaciones) {
+async function renderizarListaOperaciones(listaOperaciones) {
   contenedorOperaciones.innerHTML = "";
 
   for (const operacion of listaOperaciones) {
@@ -12,10 +19,10 @@ function renderizarListaOperaciones(listaOperaciones) {
       <div class="operacion-body">
         <h5 class="operacion-title">${operacion.type}</h5>
         <h6 class="operacion-subtitle">
-                  Cantidad adquirida: N/A
+                  Cantidad adquirida: $${operacion.amount}
         </h6>
         <p class="operacion-text">
-        Estado: N/A
+        Valor abonado: $${operacion.payed}
         </p>
       </div>
     </div>
